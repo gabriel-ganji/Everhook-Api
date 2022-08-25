@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     if (uuid.length !== 36 || uuid == undefined) {
         res.status(400).json({ Error: 400, Type: "Bad Request", message: "Algo deu errado, tente novamente." });
     } else {
-        res.status(200).json( uuid );
+      res.status(200).json({ uuid: uuid });
     }
 });
 
@@ -22,10 +22,10 @@ router.get("/geturluuid", async (req, res) => {
 
     const uuid = generateAndSaveUUID(req);
     
-    if (uuid.length !== 36 || uuid == undefined) {
-        res.status(400).json({ Error: 400, Type: "Bad Request", message: "Algo deu errado, tente novamente." });
-    } else {
-        res.status(200).json( `https://everhooks-web.vercel.app/${uuid}` );
+  if (uuid.length !== 36 || uuid == undefined) {
+    res.status(400).json({ Error: 400, Type: "Bad Request", message: "Algo deu errado, tente novamente." });
+  } else {
+    res.status(200).json({urluuid: `https://everhooks-web.vercel.app/${uuid}`});
     }
 });
 
