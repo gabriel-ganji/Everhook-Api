@@ -33,6 +33,8 @@ const dataReq = function (uuid, req) {
         console.log('Estamos em else');
         webhookRequest.body = req.body;
     }
+    
+    console.log(req.body);
 
     const status = saveOnMongo(webhookRequest);
     return status;
