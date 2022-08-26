@@ -28,7 +28,8 @@ const dataReq = function (uuid, req) {
 
     if (req.body.hottok == undefined) {
         console.log('Estamos em if');
-        webhookRequest.body = hottok;
+        webhookRequest.body = "";
+        
     } else {
         console.log('Estamos em else');
         webhookRequest.body = req.body;
