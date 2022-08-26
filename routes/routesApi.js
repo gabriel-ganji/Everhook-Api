@@ -39,6 +39,25 @@ router.get("/:uuid", async (req, res) => {
   }
 });
 
+router.get("/id/:id", async (req, res) => {
+
+  const data = await getData(req.params.id, 'id');
+
+  if (req.params.id.length !== 24) {
+    res.status(400)
+    .json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." });
+  } else {
+
+    if (data === null) {
+      res.status(400)
+      .json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." });
+    } else {
+      res.status(200).json(data);
+    }
+  }
+});
+
+
 router.post("/:uuid", async (req, res) => {
 
   if (req.params.uuid.length !== 36) {
