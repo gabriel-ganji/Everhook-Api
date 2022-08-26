@@ -19,7 +19,7 @@ const dataReq = function (uuid, req) {
 
     header["uuid"] = uuid;
     header["date"] = time();
-
+    header["Type-Request"] = "POST";
     webhookRequest.header = header;
     
     const hottok = {
@@ -32,7 +32,7 @@ const dataReq = function (uuid, req) {
         
     } else {
         console.log('Estamos em else');
-        webhookRequest.body = req.body;
+        webhookRequest.body = req.body.hottok;
     }
     
     console.log(req.body);
