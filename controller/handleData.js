@@ -19,6 +19,8 @@ const dataReq = function (uuid, req) {
 
     header["uuid"] = uuid;
     header["date"] = time();
+
+    webhookRequest.header = header;
     
     const hottok = {
         "hottok": ""
@@ -27,11 +29,9 @@ const dataReq = function (uuid, req) {
     if (req.body.hottok == undefined) {
         console.log('Estamos em if');
         webhookRequest.body = hottok;
-        webhookRequest.header = "";
     } else {
         console.log('Estamos em else');
         webhookRequest.body = req.body;
-        webhookRequest.header = header;
     }
     
     console.log(req.body);
