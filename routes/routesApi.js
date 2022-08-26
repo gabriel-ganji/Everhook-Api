@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 
 router.get("/geturluuid", async (req, res) => {
 
-    const uuid = generateAndSaveUUID(req);
+  const uuid = generateAndSaveUUID(req);
     
   if (uuid.length !== 36 || uuid == undefined) {
     res.status(400).json({ Error: 400, Type: "Bad Request", message: "Algo deu errado, tente novamente." });
