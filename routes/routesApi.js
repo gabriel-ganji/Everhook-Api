@@ -8,7 +8,6 @@ var mongodb = require("mongodb");
 const getDataById = require("../middleware/getDataById");
 var ObjectID = require('mongodb').ObjectID;
 
-
 router.use(express.json());
 
 router.get("/", async (req, res) => {
@@ -58,7 +57,6 @@ router.get("/id/:id", async (req, res) => {
   }
 });
 
-
 router.post("/:uuid", async (req, res) => {
 
   if (req.params.uuid.length !== 36) {
@@ -91,7 +89,6 @@ router.delete("/:id", async (req, res) => {
     res.status(400)
       .json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." });
   }
-  
   
 });
 
