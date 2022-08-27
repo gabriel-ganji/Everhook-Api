@@ -5,6 +5,7 @@ const Acess = require("../database/collection");
 const getData = require("../middleware/getData");
 const router = express();
 var mongodb = require("mongodb");
+const getDataById = require("../middleware/getDataById");
 var ObjectID = require('mongodb').ObjectID;
 
 
@@ -41,7 +42,7 @@ router.get("/:uuid", async (req, res) => {
 
 router.get("/id/:id", async (req, res) => {
 
-  const data = await getData(req.params.id, 'id');
+  const data = await getDataById(req.params.id);
 
   if (req.params.id.length !== 24) {
     res.status(400)
