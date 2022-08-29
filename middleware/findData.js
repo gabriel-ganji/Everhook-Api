@@ -1,30 +1,75 @@
 const acess = require("../database/collection");
+const mongodb =  require('mongodb');
+
 
 const searchAcess = async (search) => {
 
     try {
+
       var _results = [];
       var _result = await acess.find({
         token: { $regex: search, $options: "i" },
-      });
+      }).toArray();
       _results = _results.concat(_result);
-      _result = await acess.find({
-        header: { $regex: search, $options: "i" },
-      });
+
+      var _result = await acess.find({
+        "header.Host": {$regex: search, $options: "i"},
+      }).toArray();
       _results = _results.concat(_result);
-      _result = await acess.find({
-        body: { $regex: search, $options: "i" },
-      });
+
+      var _result = await acess.find({
+        "header.Connection": {$regex: search, $options: "i"},
+      }).toArray();
       _results = _results.concat(_result);
+
+      var _result = await acess.find({
+        "header.Accept": {$regex: search, $options: "i"},
+      }).toArray();
+      _results = _results.concat(_result);
+
+      var _result = await acess.find({
+        "header.Accept-Encoding": {$regex: search, $options: "i"},
+      }).toArray();
+      _results = _results.concat(_result);
+
+      var _result = await acess.find({
+        "header.Origin": {$regex: search, $options: "i"},
+      }).toArray();
+      _results = _results.concat(_result);
+
+      var _result = await acess.find({
+        "header.User-Agent": {$regex: search, $options: "i"},
+      }).toArray();
+      _results = _results.concat(_result);
+
+      var _result = await acess.find({
+        "header.Referer": {$regex: search, $options: "i"},
+      }).toArray();
+      _results = _results.concat(_result);
+
+      var _result = await acess.find({
+        "header.uuid": {$regex: search, $options: "i"},
+      }).toArray();
+      _results = _results.concat(_result);
+
+      var _result = await acess.find({
+        "header.date": {$regex: search, $options: "i"},
+      }).toArray();
+      _results = _results.concat(_result);
+
+      var _result = await acess.find({
+        "body": {$regex: search, $options: "i"},
+      }).toArray();
+      _results = _results.concat(_result);
+
       _result = await acess.find({
         created_at: { $regex: search, $options: "i" },
-      });
-        
-        _results = _results.concat(_result);
-        
-        console.log(_results);
+      }).toArray();
+      _results = _results.concat(_result);
+
   
       var _unique = [];
+
       for (let x = 0; x < _results.length; x++) {
         const elementX = JSON.parse(JSON.stringify(_results[x]));
         var _contain = false;
@@ -43,7 +88,6 @@ const searchAcess = async (search) => {
     } catch (error) {
       return { error: true, message: error, status: 400 };
     }
-
 };
   
 module.exports = searchAcess;

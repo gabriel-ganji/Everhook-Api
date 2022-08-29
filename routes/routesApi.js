@@ -3,6 +3,7 @@ const handleData = require("../controller/handleData");
 const generateAndSaveUUID = require("../middleware/generateAndSaveUUID");
 const Acess = require("../database/collection");
 const getData = require("../middleware/getData");
+const searchAcess = require("../middleware/findData")
 const router = express();
 
 router.use(express.json());
@@ -27,6 +28,22 @@ router.get("/geturluuid", async (req, res) => {
     } else {
         res.status(200).json( `https://everhooks-web.vercel.app/${uuid}` );
     }
+});
+
+router.get("/searchBy/:key", async (req, res) => {
+  try {
+
+    const _result = await searchAcess(req.params.key);
+
+
+    if (_result && _result.error) {
+      res.status(_result.status).send(_result.message);
+    } else {
+      res.status(200).json(_result);
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 router.get("/:uuid", async (req, res) => {
@@ -67,6 +84,8 @@ router.post("/:uuid", async (req, res) => {
     }
   }
 });
+
+
 
 router.delete("/:uuid", async (req, res) => {
   try {
