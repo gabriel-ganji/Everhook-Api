@@ -1,18 +1,14 @@
-var mongodb = require("mongodb");
-var ObjectID = require('mongodb').ObjectID;
-const database = require("../database/connection");
 const acesses = require("../database/collection");
 
 const getDataById = async function (id){
     
     try {
-        const dataById = await acesses.find({ _id: new mongodb.ObjectID(id.toString()) }).toArray();
+        const dataById = await acesses.find({ id: id }).toArray();
         return dataById;
     } catch {
-        return "Ops";
+        return 400;
     }
    
-
 }
 
 module.exports = getDataById;
