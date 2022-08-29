@@ -4,9 +4,8 @@ const generateAndSaveUUID = require("../middleware/generateAndSaveUUID");
 const Acess = require("../database/collection");
 const getData = require("../middleware/getData");
 const router = express();
-var mongodb = require("mongodb");
 const getDataById = require("../middleware/getDataById");
-var ObjectID = require('mongodb').ObjectID;
+const deleteItem = require("../middleware/deleteItem");
 
 router.use(express.json());
 
@@ -78,16 +77,25 @@ router.post("/:uuid", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
-  console.log(req.params.id);
-  try {
-    await Acess.deleteOne({ _id: new mongodb.ObjectID(req.params.id.toString()) });
-    res.status(200).json({
-      message: `Todos os dados relacionados ao token/uuid ${req.params.uuid} foram apagados com sucesso!`
-    });
-  } catch (error) {
-    res.status(400)
+router.delete("/id/:id", async (req, res) => {
+
+  if (req.params.id.length !== 23) {
+    res.status(400).json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." })
+  }
+  else {
+    
+    const result = await deleteItem(req.params.id);
+  
+    if (result === 200) {
+      res.status(200).json({
+        message: `Todos os dados relacionados ao id ${req.params.id} foram apagados com sucesso!`
+      });
+    }
+    if (result === 400) {
+      res.status(400)
       .json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." });
+    }
+    
   }
   
 });

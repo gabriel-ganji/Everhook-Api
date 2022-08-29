@@ -1,13 +1,13 @@
 const acesses = require("../database/collection");
 
-const deleteItens = async function (uuid) {
-    
-    //await acesses.deleteOne({ token: uuid });
+const deleteItem = async function (iid) {
+    try {
+        await acesses.deleteOne({ id: iid });
+        return 200;
 
-    acesses('posts', function(err, collection) {
-    collection.deleteOne({_id: new mongodb.ObjectID('4d512b45cc9374271b00000f')});
-});
-    
+      } catch (error) {
+        return 400;
+      }
 };
 
-module.exports = deleteItens;
+module.exports = deleteItem;
