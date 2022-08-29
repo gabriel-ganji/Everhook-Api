@@ -19,7 +19,7 @@ const dataReq = function (uuid, req) {
 
     header["uuid"] = uuid;
     header["date"] = time();
-    header["Type-Request"] = "POST";
+    header["Type_Request"] = "POST";
     webhookRequest.header = header;
     
     const hottok = {
