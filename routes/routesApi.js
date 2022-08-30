@@ -168,6 +168,4 @@ router.propfind("/:uuid", async (req, res) => {
   res.status(200).json();;
 });
 
-router.view();
-
 module.exports = router;
