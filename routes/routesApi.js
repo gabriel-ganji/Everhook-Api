@@ -22,8 +22,6 @@ router.get("/", async (req, res) => {
 
 router.get("/uuid/:uuid", async (req, res) => {
 
-  handleData(req.params.uuid, req, 'get');
-
   const data = await getData(req.params.uuid);
 
   if (req.params.uuid.length !== 36) {
