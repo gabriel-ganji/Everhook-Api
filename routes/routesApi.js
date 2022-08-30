@@ -110,6 +110,11 @@ router.get("/:uuid", async (req, res) => {
   res.status(200).json();
 });
 
+router.delete("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'delete');
+  res.status(200).json();
+});
+
 router.put("/:uuid", async (req, res) => {
   handleData(req.params.uuid, req, 'put');
   res.status(200).json();
