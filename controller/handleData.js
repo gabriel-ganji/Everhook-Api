@@ -22,17 +22,22 @@ const dataReq = function (uuid, req) {
 
     webhookRequest.header = header;
     
-    const hottok = {
-        "hottok": ""
-    }
+    // const hottok = {
+    //     "hottok": ""
+    // }
 
-    if (req.body.hottok == undefined) {
-        console.log('Estamos em if');
-        webhookRequest.body = hottok;
-    } else {
-        console.log('Estamos em else');
+    if (req.body.hottok != undefined) {
         webhookRequest.body = req.body;
+    }else{
+        webhookRequest.body = {};
     }
+    //     console.log('Estamos em if');
+    //     webhookRequest.body = hottok;
+    // } 
+    // else {
+        // console.log('Estamos em else');
+        
+        // }
 
     const status = saveOnMongo(webhookRequest);
     return status;
