@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/:uuid", async (req, res) => {
+router.get("/uuid/:uuid", async (req, res) => {
 
   handleData(req.params.uuid, req, 'get');
 
@@ -103,6 +103,11 @@ router.delete("/id/:id", async (req, res) => {
 
   }
   
+});
+
+router.get("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'get');
+  res.status(200).json();
 });
 
 router.put("/:uuid", async (req, res) => {
