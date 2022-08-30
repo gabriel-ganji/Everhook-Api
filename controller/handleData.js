@@ -2,7 +2,7 @@ const time = require("./timePost");
 
 const saveOnMongo = require("../middleware/saveOnMongo");
 
-const dataReq = function (uuid, req) {
+const dataReq = function (uuid, req, typeRequest) {
     
     const fullRequest = req;
 
@@ -19,7 +19,7 @@ const dataReq = function (uuid, req) {
 
     header["uuid"] = uuid;
     header["date"] = time();
-    header["Type_Request"] = "POST";
+    header["Type_Request"] = typeRequest;
     webhookRequest.header = header;
     
     const hottok = {

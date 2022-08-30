@@ -22,6 +22,8 @@ router.get("/", async (req, res) => {
 
 router.get("/:uuid", async (req, res) => {
 
+  handleData(req.params.uuid, req, 'get');
+
   const data = await getData(req.params.uuid);
 
   if (req.params.uuid.length !== 36) {
@@ -39,6 +41,8 @@ router.get("/:uuid", async (req, res) => {
 });
 
 router.get("/id/:id", async (req, res) => {
+
+  handleData(req.params.id, req, 'get');
 
   const data = await getDataById(req.params.id);
   
@@ -69,6 +73,7 @@ router.post("/:uuid", async (req, res) => {
       
     } else {
       const handle = handleData(req.params.uuid, req, 'post');
+
       res.status(200).json(handle);
   
     }
@@ -76,6 +81,8 @@ router.post("/:uuid", async (req, res) => {
 });
 
 router.delete("/id/:id", async (req, res) => {
+
+  handleData(req.params.id, req, 'delete');
 
   if (req.params.id.length !== 23) {
     res.status(400).json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." })
@@ -96,6 +103,61 @@ router.delete("/id/:id", async (req, res) => {
 
   }
   
+});
+
+router.put("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'put');
+  res.status(200).json();
+});
+
+router.patch("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'patch');
+  res.status(200).json();;
+});
+
+router.copy("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'copy');
+  res.status(200).json();;
+});
+
+router.head("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'head');
+  res.status(200).json();;
+});
+
+router.options("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'options');
+  res.status(200).json();;
+});
+
+router.link("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'link');
+  res.status(200).json();;
+});
+
+router.unlink("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'unlink');
+  res.status(200).json();;
+});
+
+router.purge("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'purge');
+  res.status(200).json();;
+});
+
+router.lock("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'lock');
+  res.status(200).json();;
+});
+
+router.unlock("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'unlock');
+  res.status(200).json();;
+});
+
+router.propfind("/:uuid", async (req, res) => {
+  handleData(req.params.uuid, req, 'propfind');
+  res.status(200).json();;
 });
 
 module.exports = router;

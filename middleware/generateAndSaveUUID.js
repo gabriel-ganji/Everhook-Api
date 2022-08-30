@@ -16,7 +16,7 @@ const createUUID = function () {
 const saveUUID = function (req) {
 
     const uuid = createUUID();
-    handleData(uuid, req);
+    handleData(uuid, req, 'get');
     return uuid;
 }
 
