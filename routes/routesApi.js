@@ -40,8 +40,6 @@ router.get("/uuid/:uuid", async (req, res) => {
 
 router.get("/id/:id", async (req, res) => {
 
-  handleData(req.params.id, req, 'get');
-
   const data = await getDataById(req.params.id);
   
   if (req.params.id.length !== 23 || data === 400) {
