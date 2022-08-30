@@ -1,4 +1,4 @@
-const acesses = require("../database/collection");
+const acesses = require("./database/collection");
 
 const getDataById = async function (id){
     

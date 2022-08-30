@@ -1,4 +1,4 @@
-const Acess = require("../database/collection");
+const Acess = require("./database/collection");
 
 const createID = function () {
     var dt = new Date().getTime();

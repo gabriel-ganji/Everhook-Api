@@ -1,13 +1,10 @@
-const express = require("express");
-const handleData = require("../controller/handleData");
 const generateAndSaveUUID = require("../middleware/generateAndSaveUUID");
-const Acess = require("../database/collection");
-const getData = require("../middleware/getData");
-const router = express();
+const getDataByToken = require("../middleware/getDataByToken");
 const getDataById = require("../middleware/getDataById");
 const deleteItem = require("../middleware/deleteItem");
-
-router.use(express.json());
+const handleData = require("../controller/handleData");
+const express = require("express");
+const router = express();
 
 router.get("/", async (req, res) => {
 
@@ -22,7 +19,7 @@ router.get("/", async (req, res) => {
 
 router.get("/uuid/:uuid", async (req, res) => {
 
-  const data = await getData(req.params.uuid);
+  const data = await getDataByToken(req.params.uuid);
 
   if (req.params.uuid.length !== 36) {
     res.status(400)
@@ -45,13 +42,9 @@ router.get("/id/:id", async (req, res) => {
   if (req.params.id.length !== 23 || data === 400) {
     res.status(400)
     .json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." });
-  
   } else {
-
     res.status(200).json(data);
-  
   }
-
 });
 
 router.post("/:uuid", async (req, res) => {
@@ -61,15 +54,15 @@ router.post("/:uuid", async (req, res) => {
       .json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." });
     
   } else {
-    const data = await getData(req.params.uuid);
+    const data = await getDataByToken(req.params.uuid);
 
     if (data === null) {
       res.status(400)
         .json({ Error: 400, Type: "Bad Request", Message: "O token de sua urluuid não é válido." });
       
     } else {
-      const handle = handleData(req.params.uuid, req, 'post');
 
+      const handle = handleData(req.params.uuid, req, 'post');
       res.status(200).json(handle);
   
     }
@@ -94,9 +87,7 @@ router.delete("/id/:id", async (req, res) => {
       res.status(400)
       .json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." });
     }
-
   }
-  
 });
 
 router.get("/:uuid", async (req, res) => {
