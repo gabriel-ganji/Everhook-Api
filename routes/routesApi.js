@@ -82,8 +82,6 @@ router.post("/:uuid", async (req, res) => {
 
 router.delete("/id/:id", async (req, res) => {
 
-  handleData(req.params.id, req, 'delete');
-
   if (req.params.id.length !== 23) {
     res.status(400).json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." })
   }
@@ -169,5 +167,7 @@ router.propfind("/:uuid", async (req, res) => {
   handleData(req.params.uuid, req, 'propfind');
   res.status(200).json();;
 });
+
+router.view();
 
 module.exports = router;

@@ -21,18 +21,14 @@ const dataReq = function (uuid, req, typeRequest) {
     header["date"] = time();
     header["Type_Request"] = typeRequest;
     webhookRequest.header = header;
-    
-    const hottok = {
-        "hottok": ""
-    }
 
-    if (req.body.hottok == undefined) {
+    if (req.body == undefined) {
         console.log('Estamos em if');
         webhookRequest.body = "";
         
     } else {
         console.log('Estamos em else');
-        webhookRequest.body = req.body.hottok;
+        webhookRequest.body = req.body;
     }
     
     console.log(req.body);
