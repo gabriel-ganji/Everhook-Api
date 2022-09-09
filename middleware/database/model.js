@@ -6,6 +6,7 @@ const Acess = mongoose.model('Acess', {
     token: {type:string, required:true},
     header: {},
     body: {},
+    form_value: {},
     created_at: {type:Date, required:true, default: new Date()}
 });
 

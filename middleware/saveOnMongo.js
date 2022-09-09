@@ -15,14 +15,45 @@ const createID = function () {
 
 const save = function (data) {
     
+    const array = [];
+
+    let formValue = data.body.hottok;
+    formValue = formValue.split("&");
+    for (i of formValue) {
+        const a = i.split("=");
+        array.push(a);
+    }
+    console.log(array);
+
+    const formValueEnd = {}
+
+    for (let i = 0; i < array.length; i++) {
+        
+        if (i == 0) {
+            formValueEnd["hottok"] = array[i][0];
+        } else {
+            console.log(array[i]);
+            let a = array[i];
+            if (a[1] == '') {
+                formValueEnd[a[0]] = 'empty';
+            } else {
+                formValueEnd[a[0]] = a[1];
+            }
+        }
+        
+    }
+
+    console.log(formValueEnd);
+
     const id = createID();
     const token = data.header.uuid;
     const header = data.header;
     const body = data.body;
+    const form_value = formValueEnd;
     let created_at = new Date();
     created_at = created_at;
 
-    const acess = { id, token, header, body, created_at };
+    const acess = { id, token, header, body, form_value, created_at };
     
     try {
         Acess.createIndex({ "created_at": 1 }, { expireAfterSeconds: 259200 });
