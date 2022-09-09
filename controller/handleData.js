@@ -47,7 +47,7 @@ const dataReq = function (uuid, req, typeRequest) {
         for (let i = 0; i < array.length; i++) {
             
             if (i == 0) {
-                formValueEnd["hottok"] = array[i][0];
+                formValueEnd[Object.keys(req.body)] = array[i][0];
             } else {
             
                 let a = array[i];
