@@ -3,7 +3,7 @@ const time = require("./timePost");
 const saveOnMongo = require("../middleware/saveOnMongo");
 
 const dataReq = function (uuid, req, typeRequest) {
-    console.log(req);
+    
     const fullRequest = req;
 
     const webhookRequest = {
@@ -22,19 +22,22 @@ const dataReq = function (uuid, req, typeRequest) {
     header["date"] = time();
     header["Type_Request"] = typeRequest;
     webhookRequest.header = header;
-    console.log("req body", Object.keys(req.body).length);
 
     if (Object.keys(req.body).length == 0) {
-        console.log('Estamos em if');
+       
         webhookRequest.body = "";
         webhookRequest.form_values = "";
         
     } else {
-        console.log('Estamos em else');
+       
         webhookRequest.body = req.body;
         const array = [];
         
         let formValue = Object.values(req.body)[0];
+        formValue = formValue.replaceAll("g%40", "@");
+        formValue = formValue.replaceAll("%20", " ");
+        formValue = formValue.replaceAll("%3A", ":");
+        formValue = formValue.replaceAll("%C3%8", "");
         formValue = formValue.split("&");
     
         for (i of formValue) {
