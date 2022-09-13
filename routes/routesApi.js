@@ -100,61 +100,6 @@ router.delete("/", async (req, res) => {
   res.status(200).json();
 });
 
-router.put("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'put');
-  res.status(200).json();
-});
-
-router.patch("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'patch');
-  res.status(200).json();;
-});
-
-router.copy("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'copy');
-  res.status(200).json();;
-});
-
-router.head("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'head');
-  res.status(200).json();;
-});
-
-router.options("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'options');
-  res.status(200).json();;
-});
-
-router.link("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'link');
-  res.status(200).json();;
-});
-
-router.unlink("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'unlink');
-  res.status(200).json();;
-});
-
-router.purge("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'purge');
-  res.status(200).json();;
-});
-
-router.lock("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'lock');
-  res.status(200).json();;
-});
-
-router.unlock("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'unlock');
-  res.status(200).json();;
-});
-
-router.propfind("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'propfind');
-  res.status(200).json();;
-});
-
 router.get("/:uuid", async (req, res) => {
   handleData(req.params.uuid, req, 'get');
   res.status(200).json();
