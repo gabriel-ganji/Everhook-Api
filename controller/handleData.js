@@ -30,12 +30,11 @@ const dataReq = function (uuid, req, typeRequest) {
         
     }
     
-    console.log(req.body.length);
+    console.log(Object.keys(req.body).length);
 
-    if (Object.keys(req.body).length > 20) {
+    if (Object.keys(req.body).length > 1) {
         webhookRequest.body = req.body;
         const array = [];
-        
         let formValue = req.body;
         formValue = formValue.replaceAll("g%40", "@");
         formValue = formValue.replaceAll("%20", " ");
@@ -98,9 +97,8 @@ const dataReq = function (uuid, req, typeRequest) {
             }
         }
         webhookRequest.form_values = formValueEnd;
-
     }
-    console.log(webhookRequest);
+    console.log(webhookRequest.form_values);
     const status = saveOnMongo(webhookRequest);
     return status;
 }
