@@ -90,11 +90,6 @@ router.delete("/id/:id", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  handleData(req.params.uuid, req, 'get');
-  res.status(200).json();
-});
-
 router.post("/", async (req, res) => {
   handleData(req.params.uuid, req, 'post');
   res.status(200).json();

@@ -98,7 +98,7 @@ const dataReq = function (uuid, req, typeRequest) {
         webhookRequest.form_values = formValueEnd;
 
     }
-
+    console.log(webhookRequest);
     const status = saveOnMongo(webhookRequest);
     return status;
 }
