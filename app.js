@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(xmlparser());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.text({type:"text/*"}));
+app.use(bodyParser.text({type:"*/*"}));
 app.use(express.json());
 
 const rotasApi = require("./routes/routesApi");
