@@ -6,6 +6,8 @@ const handleData = require("../controller/handleData");
 const express = require("express");
 const router = express();
 
+setTimeout(10000000000);
+
 router.get("/", async (req, res) => {
 
     const uuid = generateAndSaveUUID(req);
