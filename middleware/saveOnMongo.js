@@ -14,7 +14,7 @@ const createID = function () {
 }
 
 const save = function (data) {
-    console.log(data);
+    
     const id = createID();
     const token = data.header.uuid;
     const header = data.header;
