@@ -14,7 +14,7 @@ const rotasApi = require("./routes/routesApi");
 
 const rotaApresentation = require("./routes/routeApresentation");
 
-app.use("/ever", rotasApi);
+app.use("/ever/", rotasApi);
 app.use("/", rotaApresentation);
 
 module.exports = app;
