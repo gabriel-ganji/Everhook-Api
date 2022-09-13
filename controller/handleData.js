@@ -30,6 +30,8 @@ const dataReq = function (uuid, req, typeRequest) {
         
     }
     
+    console.log(req.body.length);
+
     if (Object.keys(req.body).length > 20) {
         webhookRequest.body = req.body;
         const array = [];
