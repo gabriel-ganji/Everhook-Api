@@ -41,12 +41,14 @@ const dataReq = function (uuid, req, typeRequest) {
             formValue = formValue.replaceAll("%3A", ":");
             formValue = formValue.replaceAll('%C3%87%C3%83', 'ÇÃ');
             formValue = formValue.replaceAll('%C3%81', 'Á');
-            formValue = formValue.split("&");*/
+            formValue = formValue.split("&");
     
             for (i of formValue) {
                 const a = i.split("=");
                 array.push(a);
-            }
+            }*/
+
+            array.push(formValue.split("="));
 
             const formValueEnd = {}
 
@@ -74,12 +76,14 @@ const dataReq = function (uuid, req, typeRequest) {
             formValue = formValue.replaceAll("%3A", ":");
             formValue = formValue.replaceAll('%C3%87%C3%83', 'ÇÃ');
             formValue = formValue.replaceAll('%C3%81', 'Á');
-            formValue = formValue.split("&");*/
+            formValue = formValue.split("&");
     
             for (i of formValue) {
                 const a = i.split("=");
                 array.push(a);
-            }
+            }*/
+
+            array.push(formValue.split("="));
 
             const formValueEnd = {}
 
