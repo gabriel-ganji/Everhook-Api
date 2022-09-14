@@ -48,7 +48,8 @@ const dataReq = function (uuid, req, typeRequest) {
                 array.push(a);
             }*/
 
-            array.push(formValue.split("="));
+            const teste = formValue.split("=");
+            array.push(teste);
 
             const formValueEnd = {}
 
@@ -82,8 +83,8 @@ const dataReq = function (uuid, req, typeRequest) {
                 const a = i.split("=");
                 array.push(a);
             }*/
-
-            array.push(formValue.split("="));
+            const teste = formValue.split("=");
+            array.push(teste);
 
             const formValueEnd = {}
 
