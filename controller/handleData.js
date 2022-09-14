@@ -36,7 +36,7 @@ const dataReq = function (uuid, req, typeRequest) {
             webhookRequest.body = req.body;
             const array = [];
             
-            let formValue = req.body;
+            let formValue = String(req.body);
             
             if (formValue.indexOf("g%40")) formValue = formValue.replaceAll("g%40", "@");
             if (formValue.indexOf("%20"))formValue = formValue.replaceAll("%20", " ");
@@ -71,7 +71,8 @@ const dataReq = function (uuid, req, typeRequest) {
             webhookRequest.body = req.body;
             const array = [];
         
-            let formValue = Object.values(req.body)[0];
+            let formValue = String(Object.values(req.body)[0]);
+            
             if (formValue.indexOf("g%40")) formValue = formValue.replaceAll("g%40", "@");
             if (formValue.indexOf("%20"))formValue = formValue.replaceAll("%20", " ");
             if (formValue.indexOf("%3A")) formValue = formValue.replaceAll("%3A", ":");
