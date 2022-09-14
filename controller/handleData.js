@@ -37,7 +37,8 @@ const dataReq = function (uuid, req, typeRequest) {
             formValue = formValue.replaceAll("g%40", "@");
             formValue = formValue.replaceAll("%20", " ");
             formValue = formValue.replaceAll("%3A", ":");
-            formValue = formValue.replaceAll("%C3%8", "");
+            formValue = formValue.replaceAll('%C3%87%C3%83', 'ÇÃ');
+            formValue = formValue.replaceAll('%C3%81', 'Á');
             formValue = formValue.split("&");
     
             for (i of formValue) {
