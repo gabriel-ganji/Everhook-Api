@@ -104,14 +104,12 @@ const dataReq = function (uuid, req, typeRequest) {
         }
     }
     
-    if (typeof (req.body) == 'object' && Object.values(req.body) > 1) {
+    if (typeof (req.body) == 'object' && Object.values(req.body).length > 1) {
 
         webhookRequest.body = JSON.stringify(req.body);
         webhookRequest.form_values = req.body;
         
     }
-    
-    console.log(webhookRequest.form_values);
 
     const status = saveOnMongo(webhookRequest);
 
