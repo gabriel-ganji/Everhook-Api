@@ -35,21 +35,21 @@ const dataReq = function (uuid, req, typeRequest) {
         if (Object.keys(req.body).length > 1) {
             webhookRequest.body = req.body;
             const array = [];
+            
             let formValue = req.body;
-            /*formValue = formValue.replaceAll("g%40", "@");
-            formValue = formValue.replaceAll("%20", " ");
-            formValue = formValue.replaceAll("%3A", ":");
-            formValue = formValue.replaceAll('%C3%87%C3%83', 'ÇÃ');
-            formValue = formValue.replaceAll('%C3%81', 'Á');
-            formValue = formValue.split("&");
+            
+            if (formValue.indexOf("g%40")) formValue = formValue.replaceAll("g%40", "@");
+            if (formValue.indexOf("%20"))formValue = formValue.replaceAll("%20", " ");
+            if (formValue.indexOf("%3A")) formValue = formValue.replaceAll("%3A", ":");
+            if (formValue.indexOf("%C3%87%C3%83")) formValue = formValue.replaceAll("%C3%87%C3%83", "ÇÃ");
+            if (formValue.indexOf("%C3%81"))formValue = formValue.replaceAll("%C3%81", "Á");
+            if (formValue.indexOf("%C3%81")) formValue = formValue.split("&");
+    
     
             for (i of formValue) {
                 const a = i.split("=");
                 array.push(a);
-            }*/
-
-            const teste = formValue.split("=");
-            array.push(teste);
+            }
 
             const formValueEnd = {}
 
@@ -72,19 +72,17 @@ const dataReq = function (uuid, req, typeRequest) {
             const array = [];
         
             let formValue = Object.values(req.body)[0];
-            /*formValue = formValue.replaceAll("g%40", "@");
-            formValue = formValue.replaceAll("%20", " ");
-            formValue = formValue.replaceAll("%3A", ":");
-            formValue = formValue.replaceAll('%C3%87%C3%83', 'ÇÃ');
-            formValue = formValue.replaceAll('%C3%81', 'Á');
-            formValue = formValue.split("&");
+            if (formValue.indexOf("g%40")) formValue = formValue.replaceAll("g%40", "@");
+            if (formValue.indexOf("%20"))formValue = formValue.replaceAll("%20", " ");
+            if (formValue.indexOf("%3A")) formValue = formValue.replaceAll("%3A", ":");
+            if (formValue.indexOf("%C3%87%C3%83")) formValue = formValue.replaceAll("%C3%87%C3%83", "ÇÃ");
+            if (formValue.indexOf("%C3%81"))formValue = formValue.replaceAll("%C3%81", "Á");
+            if (formValue.indexOf("%C3%81")) formValue = formValue.split("&");
     
             for (i of formValue) {
                 const a = i.split("=");
                 array.push(a);
-            }*/
-            const teste = formValue.split("=");
-            array.push(teste);
+            }
 
             const formValueEnd = {}
 
