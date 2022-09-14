@@ -5,6 +5,8 @@ const saveOnMongo = require("../middleware/saveOnMongo");
 const dataReq = function (uuid, req, typeRequest) {
     
     const fullRequest = req;
+    console.log(req);
+    console.log(req.body);
 
     const webhookRequest = {
         header: {},
