@@ -36,12 +36,12 @@ const dataReq = function (uuid, req, typeRequest) {
             webhookRequest.body = req.body;
             const array = [];
             let formValue = req.body;
-            formValue = formValue.replaceAll("g%40", "@");
+            /*formValue = formValue.replaceAll("g%40", "@");
             formValue = formValue.replaceAll("%20", " ");
             formValue = formValue.replaceAll("%3A", ":");
             formValue = formValue.replaceAll('%C3%87%C3%83', 'ÇÃ');
             formValue = formValue.replaceAll('%C3%81', 'Á');
-            formValue = formValue.split("&");
+            formValue = formValue.split("&");*/
     
             for (i of formValue) {
                 const a = i.split("=");
@@ -69,12 +69,12 @@ const dataReq = function (uuid, req, typeRequest) {
             const array = [];
         
             let formValue = Object.values(req.body)[0];
-            formValue = formValue.replaceAll("g%40", "@");
+            /*formValue = formValue.replaceAll("g%40", "@");
             formValue = formValue.replaceAll("%20", " ");
             formValue = formValue.replaceAll("%3A", ":");
             formValue = formValue.replaceAll('%C3%87%C3%83', 'ÇÃ');
             formValue = formValue.replaceAll('%C3%81', 'Á');
-            formValue = formValue.split("&");
+            formValue = formValue.split("&");*/
     
             for (i of formValue) {
                 const a = i.split("=");
