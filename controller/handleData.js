@@ -5,8 +5,6 @@ const saveOnMongo = require("../middleware/saveOnMongo");
 const dataReq = function (uuid, req, typeRequest) {
     
     const fullRequest = req;
-    console.log(req);
-    console.log(req.body);
 
     const webhookRequest = {
         header: {},
@@ -72,7 +70,7 @@ const dataReq = function (uuid, req, typeRequest) {
             const array = [];
         
             let formValue = String(Object.values(req.body)[0]);
-            
+
             if (formValue.indexOf("g%40")) formValue = formValue.replaceAll("g%40", "@");
             if (formValue.indexOf("%20"))formValue = formValue.replaceAll("%20", " ");
             if (formValue.indexOf("%3A")) formValue = formValue.replaceAll("%3A", ":");
@@ -105,9 +103,20 @@ const dataReq = function (uuid, req, typeRequest) {
             webhookRequest.form_values = formValueEnd;
         }
     }
+    
+    if (typeof (req.body) == 'object' && Object.values(req.body) > 1) {
+
+        webhookRequest.body = JSON.stringify(req.body);
+        webhookRequest.form_values = req.body;
+        
+    }
+    
     console.log(webhookRequest.form_values);
+
     const status = saveOnMongo(webhookRequest);
+
     return status;
+
 }
 
 module.exports = dataReq;
