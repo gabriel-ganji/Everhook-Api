@@ -39,7 +39,7 @@ router.get("/id/:id", async (req, res) => {
 
   const data = await getDataById(req.params.id);
   
-  if (req.params.id.length !== 23 || data === 400) {
+  if (req.params.id.length !== 24 || data === 400) {
     res.status(400)
     .json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." });
   } else {
@@ -71,7 +71,7 @@ router.post("/:uuid", async (req, res) => {
 
 router.delete("/id/:id", async (req, res) => {
 
-  if (req.params.id.length !== 23) {
+  if (req.params.id.length !== 24) {
     res.status(400).json({ Error: 400, Type: "Bad Request", Message: "Algo deu errado, tente novamente." })
   }
   else {
